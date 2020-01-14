@@ -2,43 +2,43 @@ package periods
 
 import "fmt"
 
-//Comparison struct
+//Comparison struct using by Periods
 type Comparison struct {
 	First  Period
 	Second Period
 }
 
-//IsBigger than Date?
+//First date IsBigger than Second one?
 func (c *Comparison) IsBigger() bool {
 	return (c.First.Start.Before(c.Second.Start) && c.First.End.After(c.Second.End)) || (c.First.Start.Equal(c.Second.Start) && c.First.End.After(c.Second.End)) || (c.First.Start.Before(c.Second.Start) && c.First.End.Equal(c.Second.End))
 }
 
-//IsSame than Date?
+//First date IsSame the Second one?
 func (c *Comparison) IsSame() bool {
 	return c.First.Start.Equal(c.Second.Start) && c.First.End.Equal(c.Second.End)
 }
 
-//IsDifferent than date?
+//First date IsDifferent of Second one?
 func (c *Comparison) IsDifferent() bool {
 	return (c.First.Start.Before(c.Second.Start) && c.First.End.Before(c.Second.Start)) || (c.First.Start.After(c.Second.End) && c.First.End.After(c.Second.End))
 }
 
-//IsInside than date?
+//First date IsInside of Second one?
 func (c *Comparison) IsInside() bool {
 	return (c.First.Start.After(c.Second.Start) && c.First.Start.Before(c.Second.End)) && (c.First.End.After(c.Second.Start) && c.First.End.Before(c.Second.End))
 }
 
-//IsCross than date?
+//First date IsCross by Second one?
 func (c *Comparison) IsCross() bool {
 	return c.IsLeftCross() || c.IsRightCross()
 }
 
-//IsLeftCross than date?
+//First date IsLeftCross by Second one?
 func (c *Comparison) IsLeftCross() bool {
 	return c.First.Start.After(c.Second.Start) && c.First.End.After(c.Second.Start) && (c.First.End.After(c.Second.End) || c.First.End.Equal(c.Second.End))
 }
 
-//IsRightCross than date?
+//First date IsRightCross by Second one?
 func (c *Comparison) IsRightCross() bool {
 	return c.First.End.After(c.Second.Start) && c.First.Start.Before(c.Second.End) && (c.First.Start.Before(c.Second.Start) || c.First.Start.Equal(c.Second.Start))
 }

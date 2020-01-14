@@ -1,9 +1,11 @@
 package periods
 
+//Set struct like using map as a HashSet
 type Set struct {
 	hashSet map[int64]Period
 }
 
+//New HashSet of Periods
 func (s *Set) New(p []Period) Set {
 	set := Set{make(map[int64]Period)}
 
@@ -26,6 +28,7 @@ func toArray(set Set) []Period {
 	return periods
 }
 
+//Deduplicate is useful to convert a simple array to an array of unique values
 func Deduplicate(periods []Period) []Period {
 	return toArray(toSet(periods))
 }

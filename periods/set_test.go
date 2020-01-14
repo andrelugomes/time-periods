@@ -7,7 +7,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-
 func TestNewSet(t *testing.T) {
 	period1 := Period{
 		time.Date(2020, 01, 01, 0, 0, 0, 0, time.UTC),

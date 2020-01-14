@@ -4,16 +4,18 @@ import (
 	"time"
 )
 
-//Period struct
+//Period struct composed by a start Time and a end time
 type Period struct {
 	Start time.Time
 	End   time.Time
 }
 
+//Hash this period with an unique int64
 func (p *Period) Hash() int64{
 	return p.Start.UnixNano() + p.End.Unix()
 }
 
+//Normalize two or more periods removing conflicts
 func Normalize(periods []Period) []Period {
 	Deduplicate(periods)
 	if len(periods) > 1 {
@@ -50,6 +52,7 @@ func Normalize(periods []Period) []Period {
 	return periods
 }
 
+//WorkingDays get how many working days has
 func WorkingDays(period Period) int{
 	days := 0
 	start := dateWithoutTime(period)
@@ -61,6 +64,7 @@ func WorkingDays(period Period) int{
 	return days
 }
 
+//Weekends get how many weekends days has
 func Weekends(period Period) int{
 	days := 0
 	start := dateWithoutTime(period)
