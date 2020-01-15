@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-//Period struct composed by a start Time and a end time
+//Period struct composed by a start Time and an end time
 type Period struct {
 	Start time.Time
 	End   time.Time
